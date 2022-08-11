@@ -1,5 +1,5 @@
 # vue-resizer
-A series of the resizer components for Vue.js
+A fork series of the resizer components for Vue.js
 
 ### [For all the usages please check the website](https://vue-resizer.vicuxd.com/) 
 
