@@ -1,5 +1,7 @@
 # vue-resizer
-A fork series of the resizer components for Vue.js
+A series of the resizer components for Vue.js
+
+Original Work by [Justcaliturner](https://github.com/justcaliturner)
 
 ### [For all the usages please check the website](https://vue-resizer.vicuxd.com/) 
 
