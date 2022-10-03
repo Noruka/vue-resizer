@@ -15,7 +15,10 @@
       class="slider_row"
       @touchstart.passive="mobileResizeRow"
       @mousedown="resizeRow"
-      :style="colors"
+      :style="{
+        height: sliderWidth + 'px',
+        zIndex: sliderZIndex
+      }"
     ></div>
   </div>
 </template>
@@ -69,18 +72,6 @@ export default {
       reMin: this.minHeight,
       isDragging: false,
     };
-  },
-  computed: {
-    colors() {
-      return {
-        '--slider-bgcolor': this.sliderBgColor,
-        '--slider-color': this.sliderColor,
-        '--sliderHoverColor': this.sliderHoverColor,
-        '--sliderBgHoverColor': this.sliderBgHoverColor,
-        '--height': this.height + 'px',
-        '--z-index': this.sliderZIndex
-      }
-    }
   },
   methods: {
     mobileResizeRow(e) {
@@ -184,7 +175,7 @@ export default {
   width: 100%;
   z-index: 1;
   cursor: row-resize;
-  background: var(--slider-bgcolor);
+  background-color: #d8af46;
 }
 .resize_row > .slider_row:before {
   transition: background-color 0.2s;
@@ -198,7 +189,7 @@ export default {
   width: 24%;
   min-width: 30px;
   max-width: 70px;
-  background-color: var(--slider-color);
+  background-color: #ffffff;
 }
 .resize_row > .slider_row:after {
   transition: background-color 0.2s;
@@ -212,16 +203,16 @@ export default {
   width: 24%;
   min-width: 30px;
   max-width: 70px;
-  background-color: var(--slider-color);
+  background-color: #ffffff;
 }
 .resize_row > .slider_row:hover:before,
 .resize_row > .slider_row:hover:after,
 .resize_row > .slider_row:active:before,
 .resize_row > .slider_row:active:after {
-  background-color: var(--sliderHoverColor);
+  background-color: #ffffff;
 }
 .resize_row > .slider_row:hover,
 .resize_row > .slider_row:active {
-  background: var(--sliderBgHoverColor);
+  background: #d8af46;
 }
 </style>
