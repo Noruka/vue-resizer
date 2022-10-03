@@ -185,8 +185,6 @@ export default {
   z-index: 1;
   cursor: row-resize;
   background: var(--slider-bgcolor);
-  height: var(--height);
-  z-index: var(--z-index);
 }
 .resize_row > .slider_row:before {
   transition: background-color 0.2s;
