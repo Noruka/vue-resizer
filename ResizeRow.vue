@@ -15,10 +15,7 @@
       class="slider_row"
       @touchstart.passive="mobileResizeRow"
       @mousedown="resizeRow"
-      :style="{
-        height: sliderWidth + 'px',
-        zIndex: sliderZIndex
-      }"
+      :style="colors"
     ></div>
   </div>
 </template>
@@ -50,19 +47,19 @@ export default {
     },
     sliderColor: {
       type: String,
-      default: "#6f808d",
+      default: "#ffffff",
     },
     sliderBgColor: {
       type: String,
-      default: "#1f2e3a",
+      default: "#ffffff",
     },
     sliderHoverColor: {
       type: String,
-      default: "#6f808d",
+      default: "#d8af46",
     },
     sliderBgHoverColor: {
       type: String,
-      default: "#16222a",
+      default: "#d8af46",
     },
   },
   data() {
@@ -72,6 +69,18 @@ export default {
       reMin: this.minHeight,
       isDragging: false,
     };
+  },
+  computed: {
+    colors() {
+      return {
+        '--slider-bgcolor': this.sliderBgColor,
+        '--slider-color': this.sliderColor,
+        '--sliderHoverColor': this.sliderHoverColor,
+        '--sliderBgHoverColor': this.sliderBgHoverColor,
+        '--height': this.height + 'px',
+        '--z-index': this.sliderZIndex
+      }
+    }
   },
   methods: {
     mobileResizeRow(e) {
@@ -175,7 +184,9 @@ export default {
   width: 100%;
   z-index: 1;
   cursor: row-resize;
-  background: v-bind("sliderBgColor");
+  background: var(--slider-bgcolor);
+  height: var(--height);
+  z-index: var(--z-index);
 }
 .resize_row > .slider_row:before {
   transition: background-color 0.2s;
@@ -189,7 +200,7 @@ export default {
   width: 24%;
   min-width: 30px;
   max-width: 70px;
-  background-color: v-bind("sliderColor");
+  background-color: var(--slider-color);
 }
 .resize_row > .slider_row:after {
   transition: background-color 0.2s;
@@ -203,16 +214,16 @@ export default {
   width: 24%;
   min-width: 30px;
   max-width: 70px;
-  background-color: v-bind("sliderColor");
+  background-color: var(--slider-color);
 }
 .resize_row > .slider_row:hover:before,
 .resize_row > .slider_row:hover:after,
 .resize_row > .slider_row:active:before,
 .resize_row > .slider_row:active:after {
-  background-color: v-bind("sliderHoverColor");
+  background-color: var(--sliderHoverColor);
 }
 .resize_row > .slider_row:hover,
 .resize_row > .slider_row:active {
-  background: v-bind("sliderBgHoverColor");
+  background: var(--sliderBgHoverColor);
 }
 </style>
